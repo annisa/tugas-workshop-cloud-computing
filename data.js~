@@ -1,0 +1,16 @@
+/*
+ * GET data listing.
+ */
+
+var databaseUrl = "localhost/nissadb";
+var collections = ["data"];
+var db = require("mongojs").connect(databaseUrl, collections);
+
+exports.list = function(req, res){
+
+	// mencari dan menampilkan semua data mahasiswa
+	db.data.find(function(err, data) {
+  	res.render('employee', {listOfData: data, title: 'Daftar mahasiswa'});
+	});
+
+};
